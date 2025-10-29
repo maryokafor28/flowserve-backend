@@ -10,7 +10,9 @@ export const createUserSchema = z.object({
       message: "Invalid email format",
     }),
   }),
-}); // For getting users with pagination (validates query params)
+});
+
+// For getting users with pagination (validates query params)
 export const getUsersSchema = z.object({
   query: z.object({
     page: z.coerce

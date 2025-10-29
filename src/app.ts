@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { apiLimiter } from "./middlewares/rateLimiter";
 import { requestLogger } from "./middlewares/requestLogger";
 import userRoutes from "./routes/userRoutes";
 import { errorHandler } from "./middlewares/errorHandler";
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(requestLogger);
 
 // Routes
+app.use("/api", apiLimiter);
 app.use("/api/users", userRoutes);
 
 // Basic health route
