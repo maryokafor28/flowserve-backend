@@ -1,13 +1,22 @@
-import express, { Application, Request, Response } from "express";
-import dotenv from "dotenv";
+import express from "express";
+import cors from "cors";
+import { requestLogger } from "./middlewares/requestLogger";
+import userRoutes from "./routes/userRoutes";
+import { errorHandler } from "./middlewares/errorHandler";
 
-dotenv.config();
+const app = express();
 
-const app: Application = express();
+app.use(cors());
 app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
-  res.json({ message: "FlowServe API running..." });
-});
+// Log all incoming requests
+app.use(requestLogger);
+
+// Routes
+app.use("/api/users", userRoutes);
+
+// Basic health route
+app.get("/", (_, res) => res.json({ message: "FlowServe API running 🚀" }));
+app.use(errorHandler);
 
 export default app;

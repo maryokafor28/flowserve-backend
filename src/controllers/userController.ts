@@ -1,31 +1,41 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { userService } from "../services/userService";
+import { AppError } from "../utils/appError";
 
 export const userController = {
-  async createUser(req: Request, res: Response) {
+  // Create a new user
+  async createUser(req: Request, res: Response, next: NextFunction) {
     try {
       const { name, email } = req.body;
 
-      if (!name || !email) {
-        return res.status(400).json({ error: "Name and email are required" });
-      }
-
       const user = await userService.createUser(name, email);
-      res.status(201).json(user);
+      res.status(201).json({
+        status: "success",
+        data: user,
+      });
     } catch (error: any) {
       if (error.code === "P2002") {
-        return res.status(409).json({ error: "Email already exists" });
+        // Prisma duplicate constraint
+        return next(new AppError("Email already exists", 409));
       }
-      res.status(500).json({ error: "Internal Server Error" });
+      next(error);
     }
   },
 
-  async getUsers(_req: Request, res: Response) {
+  // Get users with pagination
+  async getUsers(req: Request, res: Response, next: NextFunction) {
     try {
-      const users = await userService.getAllUsers();
-      res.json(users);
+      const page = Number(req.query.page) || 1;
+      const limit = Number(req.query.limit) || 10;
+
+      const usersPaginated = await userService.getUsersPaginated(page, limit);
+
+      res.status(200).json({
+        status: "success",
+        ...usersPaginated,
+      });
     } catch (error) {
-      res.status(500).json({ error: "Internal Server Error" });
+      next(error);
     }
   },
 };
