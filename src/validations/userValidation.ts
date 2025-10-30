@@ -28,3 +28,31 @@ export const getUsersSchema = z.object({
       .default(10),
   }),
 });
+// ✅ Get a single user by ID
+export const getUserByIdSchema = z.object({
+  params: z.object({
+    id: z.string().uuid("Invalid user ID format"),
+  }),
+});
+// ✅ Update user
+export const updateUserSchema = z.object({
+  params: z.object({
+    id: z.string().uuid("Invalid user ID format"),
+  }),
+  body: z
+    .object({
+      name: z.string().min(2).optional(),
+      email: z.string().email("Invalid email format").optional(),
+    })
+    .refine(
+      (data) => data.name || data.email,
+      "At least one field (name or email) must be provided"
+    ),
+});
+
+// ✅ Delete user
+export const deleteUserSchema = z.object({
+  params: z.object({
+    id: z.string().uuid("Invalid user ID format"),
+  }),
+});

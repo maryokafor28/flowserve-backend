@@ -4,8 +4,8 @@ export const createTransactionSchema = z.object({
   body: z.object({
     amount: z.coerce.number().positive("Amount must be greater than 0"),
     description: z.string().optional(),
-    senderId: z.string().uuid("Sender ID must be a valid UUID"),
-    receiverId: z.string().uuid("Receiver ID must be a valid UUID"),
+    senderId: z.uuid({ message: "Sender ID must be a valid UUID" }),
+    receiverId: z.uuid({ message: "Receiver ID must be a valid UUID" }),
   }),
 });
 
@@ -19,7 +19,7 @@ export const getTransactionsSchema = z.object({
 
 export const updateTransactionStatusSchema = z.object({
   params: z.object({
-    id: z.string().uuid("Invalid transaction ID"),
+    id: z.uuid({ message: "Invalid transaction ID" }),
   }),
   body: z.object({
     status: z.enum(["PENDING", "COMPLETED", "FAILED", "CANCELLED"], {

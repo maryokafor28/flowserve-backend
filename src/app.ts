@@ -8,19 +8,24 @@ import { errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
 
+// Basic middleware (CORS and JSON parsing)
 app.use(cors());
 app.use(express.json());
 
 // Log all incoming requests
 app.use(requestLogger);
 
-// Routes
+// Rate limiting (BEFORE routes)
 app.use("/api", apiLimiter);
+
+// Routes
 app.use("/api/users", userRoutes);
 app.use("/api/transactions", transactionRoutes);
 
-// Basic health route
+// Basic health route (outside rate limiting)
 app.get("/", (_, res) => res.json({ message: "FlowServe API running 🚀" }));
+
+// Error handler (MUST be last)
 app.use(errorHandler);
 
 export default app;

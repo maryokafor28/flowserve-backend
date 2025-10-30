@@ -31,4 +31,19 @@ export const userService = {
       },
     };
   },
+
+  async getUserById(id: string) {
+    return prisma.user.findUnique({ where: { id } });
+  },
+
+  async updateUser(id: string, name?: string, email?: string) {
+    return prisma.user.update({
+      where: { id },
+      data: { name, email },
+    });
+  },
+
+  async deleteUser(id: string) {
+    return prisma.user.delete({ where: { id } });
+  },
 };
