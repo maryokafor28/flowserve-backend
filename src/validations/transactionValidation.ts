@@ -14,6 +14,7 @@ export const getTransactionsSchema = z.object({
     page: z.coerce.number().int().positive().default(1),
     limit: z.coerce.number().int().positive().max(100).default(10),
     status: z.enum(["PENDING", "COMPLETED", "FAILED", "CANCELLED"]).optional(),
+    userId: z.string().uuid().optional(), // ✅ Add this
   }),
 });
 

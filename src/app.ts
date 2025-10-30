@@ -16,7 +16,9 @@ app.use(express.json());
 app.use(requestLogger);
 
 // Rate limiting (BEFORE routes)
-app.use("/api", apiLimiter);
+if (process.env.NODE_ENV === "production") {
+  app.use("/api", apiLimiter);
+}
 
 // Routes
 app.use("/api/users", userRoutes);

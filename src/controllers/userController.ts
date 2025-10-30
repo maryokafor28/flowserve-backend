@@ -39,7 +39,7 @@ export const userController = {
     }
   },
 
-  // 🟢 Get single user by ID
+  //  Get single user by ID
   async getUserById(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
@@ -58,7 +58,7 @@ export const userController = {
     }
   },
 
-  // 🟠 Update user by ID
+  //  Update user by ID
   async updateUser(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
@@ -81,7 +81,7 @@ export const userController = {
     }
   },
 
-  // 🔴 Delete user by ID
+  //  Delete user by ID
   async deleteUser(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;

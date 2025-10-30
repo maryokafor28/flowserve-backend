@@ -28,10 +28,24 @@ export const transactionService = {
     });
   },
 
-  async getTransactions(page = 1, limit = 10, status?: TransactionStatus) {
+  async getTransactions(
+    page = 1,
+    limit = 10,
+    status?: TransactionStatus,
+    userId?: string // ✅ Add userId parameter
+  ) {
     const skip = (page - 1) * limit;
 
-    const where = status ? { status } : {};
+    // ✅ Build where clause with userId filter
+    const where: any = {};
+
+    if (status) {
+      where.status = status;
+    }
+
+    if (userId) {
+      where.OR = [{ senderId: userId }, { receiverId: userId }];
+    }
 
     const [transactions, total] = await Promise.all([
       prisma.transaction.findMany({

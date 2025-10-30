@@ -1,4 +1,3 @@
-// src/controllers/transactionController.ts
 import { Request, Response, NextFunction } from "express";
 import { transactionService } from "../services/transactionService";
 import { TransactionStatus } from "@prisma/client";
@@ -35,12 +34,13 @@ export const transactionController = {
 
   async getTransactions(req: Request, res: Response, next: NextFunction) {
     try {
-      const { page, limit, status } = req.query;
+      const { page, limit, status, userId } = req.query; // ✅ Extract userId
 
       const result = await transactionService.getTransactions(
         Number(page) || 1,
         Number(limit) || 10,
-        status as TransactionStatus | undefined
+        status as TransactionStatus | undefined,
+        userId as string | undefined // ✅ Pass userId
       );
 
       res.json(result);
