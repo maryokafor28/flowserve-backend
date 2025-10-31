@@ -15,7 +15,7 @@ app.use(
       "http://localhost:5173", // for local dev (Vite)
       "https://flowserve-frontend-three.vercel.app", // your live frontend
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
   })
 );
