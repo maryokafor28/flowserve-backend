@@ -9,7 +9,16 @@ import { errorHandler } from "./middlewares/errorHandler";
 const app = express();
 
 // Basic middleware (CORS and JSON parsing)
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // for local dev (Vite)
+      "https://flowserve-frontend-three.vercel.app", // your live frontend
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Log all incoming requests
