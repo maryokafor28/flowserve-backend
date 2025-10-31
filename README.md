@@ -2,7 +2,7 @@
 
 A scalable and reliable REST API for real-time transaction processing and digital wallet operations built with Node.js, Express, TypeScript, and PostgreSQL.
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 - **Node.js** - Runtime environment
 - **Express.js** - Web framework
@@ -77,7 +77,7 @@ npx prisma migrate dev --name init
 npx prisma db seed
 ```
 
-## 🚀 Running the Application
+##  Running the Application
 
 ### Development Mode
 
@@ -94,7 +94,7 @@ npm run build
 npm start
 ```
 
-## 📚 API Documentation
+##  API Documentation
 
 ### Base URL
 
@@ -120,234 +120,19 @@ Response:
 
 ---
 
-### Users Endpoints
 
-#### Get All Users
 
-```http
-GET /api/users?page=1&limit=20
-```
+## 📄 API Documentation
 
-**Query Parameters:**
+For complete API reference and example requests, visit the public Postman Docs below:
 
-- `page` (optional, default: 1) - Page number
-- `limit` (optional, default: 20) - Items per page
+👉 **[View API Docs on Postman](https://documenter.getpostman.com/view/48798242/2sB3WpQ11H)**
 
-**Response:**
-
-```json
-{
-  "data": [
-    {
-      "id": "uuid",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "createdAt": "2025-01-01T00:00:00.000Z",
-      "updatedAt": "2025-01-01T00:00:00.000Z"
-    }
-  ],
-  "total": 45,
-  "page": 1,
-  "limit": 20,
-  "totalPages": 3
-}
-```
-
-#### Get Single User
-
-```http
-GET /api/users/:id
-```
-
-**Response:**
-
-```json
-{
-  "user": {
-    "id": "uuid",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "createdAt": "2025-01-01T00:00:00.000Z",
-    "updatedAt": "2025-01-01T00:00:00.000Z"
-  }
-}
-```
-
-#### Create User
-
-```http
-POST /api/users
-```
-
-**Request Body:**
-
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com"
-}
-```
-
-**Response:**
-
-```json
-{
-  "message": "User created successfully",
-  "user": {
-    "id": "uuid",
-    "name": "John Doe",
-    "email": "john@example.com",
-    "createdAt": "2025-01-01T00:00:00.000Z",
-    "updatedAt": "2025-01-01T00:00:00.000Z"
-  }
-}
-```
-
-#### Update User
-
-```http
-PATCH /api/users/:id
-```
-
-**Request Body:**
-
-```json
-{
-  "name": "Jane Doe",
-  "email": "jane@example.com"
-}
-```
-
-#### Delete User
-
-```http
-DELETE /api/users/:id
-```
-
-**Response:**
-
-```json
-{
-  "message": "User deleted successfully"
-}
-```
-
----
-
-### Transactions Endpoints
-
-#### Get All Transactions
-
-```http
-GET /api/transactions?page=1&limit=10&status=PENDING
-```
-
-**Query Parameters:**
-
-- `page` (optional, default: 1) - Page number
-- `limit` (optional, default: 10) - Items per page
-- `status` (optional) - Filter by status: `PENDING`, `COMPLETED`, `FAILED`, `CANCELLED`
-
-**Response:**
-
-```json
-{
-  "data": [
-    {
-      "id": "uuid",
-      "amount": "100.50",
-      "description": "Payment for lunch",
-      "status": "COMPLETED",
-      "senderId": "uuid",
-      "receiverId": "uuid",
-      "sender": {
-        "id": "uuid",
-        "name": "John Doe",
-        "email": "john@example.com"
-      },
-      "receiver": {
-        "id": "uuid",
-        "name": "Jane Smith",
-        "email": "jane@example.com"
-      },
-      "createdAt": "2025-01-01T00:00:00.000Z"
-    }
-  ],
-  "total": 25,
-  "page": 1,
-  "limit": 10,
-  "totalPages": 3
-}
-```
-
-#### Create Transaction
-
-```http
-POST /api/transactions
-```
-
-**Request Body:**
-
-```json
-{
-  "amount": 100.5,
-  "description": "Payment for lunch",
-  "senderId": "uuid",
-  "receiverId": "uuid"
-}
-```
-
-**Response:**
-
-```json
-{
-  "message": "Transaction created successfully",
-  "transaction": {
-    "id": "uuid",
-    "amount": "100.50",
-    "description": "Payment for lunch",
-    "status": "PENDING",
-    "senderId": "uuid",
-    "receiverId": "uuid",
-    "sender": {
-      /* user object */
-    },
-    "receiver": {
-      /* user object */
-    },
-    "createdAt": "2025-01-01T00:00:00.000Z"
-  }
-}
-```
-
-#### Update Transaction Status
-
-```http
-PATCH /api/transactions/:id/status
-```
-
-**Request Body:**
-
-```json
-{
-  "status": "COMPLETED"
-}
-```
-
-**Valid Statuses:** `PENDING`, `COMPLETED`, `FAILED`, `CANCELLED`
-
-**Response:**
-
-```json
-{
-  "message": "Transaction marked as COMPLETED",
-  "transaction": {
-    /* updated transaction object */
-  }
-}
-```
-
----
+This documentation covers:
+- ✅ Endpoints
+- ✅ Request & Response examples
+- ✅ Status codes
+- ✅ Live testing with deployed API
 
 ## 🔒 Rate Limiting
 
