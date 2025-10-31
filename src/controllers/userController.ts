@@ -43,7 +43,10 @@ export const userController = {
   async getUserById(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
+      console.log("🔍 Looking for user with ID:", id); // Add this
+
       const user = await userService.getUserById(id);
+      console.log("📦 User found:", user); // Add this
 
       if (!user) {
         return next(new AppError("User not found", 404));

@@ -7,7 +7,7 @@ A scalable and reliable REST API for real-time transaction processing and digita
 - **Node.js** - Runtime environment
 - **Express.js** - Web framework
 - **TypeScript** - Type safety
-- **PostgreSQL** - Database
+- **PostgreSQL(Supabase)** -cloud hosted Database
 - **Prisma** - ORM
 - **Pino** - Logging
 - **Zod** - Validation
@@ -26,18 +26,18 @@ A scalable and reliable REST API for real-time transaction processing and digita
 - ✅ CORS enabled
 - ✅ TypeScript for type safety
 
-## 🛠️ Prerequisites
+## Prerequisites
 
 - Node.js (v18 or higher)
-- PostgreSQL (v14 or higher)
+- PostgreSQL (v14 or higher) local or supabase hosted
 - npm or yarn
 
-## 📦 Installation
+## Installation
 
 1. **Clone the repository:**
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/maryokafor28/flowserve-backend.git>
 cd flowserve-backend
 ```
 
@@ -56,14 +56,15 @@ Create a `.env` file in the root directory:
 PORT=4000
 NODE_ENV=development
 
-# Database
-DATABASE_URL="postgresql://username:password@localhost:5432/flowserve_db"
+# Local PostgreSQL (for local development)
+DATABASE_URL="postgresql://postgres:password@localhost:5432/flowserve"
 
-# Example for local PostgreSQL:
-# DATABASE_URL="postgresql://postgres:password@localhost:5432/flowserve"
+# Supabase (for production deployment)
+# Replace with your Supabase connection string from Project Settings → Database
+# DATABASE_URL="postgresql://postgres.<SUPABASE_USER>:<SUPABASE_PASSWORD>@db.<SUPABASE_PROJECT>.supabase.co:5432/postgres"
 ```
 
-4. **Set up the database:**
+When deploying, set your Supabase DATABASE_URL in your hosting environment (Render, Vercel, Railway, etc.) under Environment Variables. 4. **Set up the database:**
 
 ```bash
 # Generate Prisma Client
@@ -98,7 +99,9 @@ npm start
 ### Base URL
 
 ```
-http://localhost:4000/api
+http://localhost:4000/api or deployed url
+https://flowserve-backend.onrender.com/api
+
 ```
 
 ### Health Check
@@ -510,13 +513,13 @@ MIT
 
 ## 👤 Author
 
-**Your Name**  
+**Mary Amadi**  
 GitHub: [@braveredemptive](https://github.com/braveredemptive)
 
 ---
 
-## 🔗 Related Repositories
+## Related Repositories
 
-- [Frontend Repository](link-to-frontend-repo) - React + TypeScript + Tailwind CSS
+- [https://github.com/maryokafor28/flowserve-frontend.git](link-to-frontend-repo) - React + vite + TypeScript + Tailwind CSS
 
 ---
