@@ -52,11 +52,11 @@ npm install
 Create a `.env` file in the root directory:
 
 ```env
-# Server
+## Server
 PORT=4000
 NODE_ENV=development
 
-# Local PostgreSQL (for local development)
+## Local PostgreSQL (for local development)
 DATABASE_URL="postgresql://postgres:password@localhost:5432/flowserve"
 
 # Supabase (for production deployment)
