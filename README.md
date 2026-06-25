@@ -97,11 +97,9 @@ npm start
 
 ## Base URL
 
-```
-http://localhost:4000/api or deployed url
-**[https://flowserve-backend.onrender.com/api
-](https://flowserve-backend-a163.onrender.com)**
-```
+* **Local Development:** http://localhost:4000/api
+* **Production:** [FlowServe API](https://flowserve-backend-a163.onrender.com/api)
+
 
 ### Health Check
 
