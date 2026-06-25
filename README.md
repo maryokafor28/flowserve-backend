@@ -56,16 +56,16 @@ Create a `.env` file in the root directory:
 Create a `.env` file in the root directory and configure the following variables:
 
 env
-# Server Configuration
+##  Server Configuration
 PORT=4000
 NODE_ENV=development
 
-# Database Configuration (Local Development)
+##  Database Configuration (Local Development)
 DATABASE_URL="postgresql://postgres:password@localhost:5432/flowserve"
 
-# Database Configuration (Production - Supabase)
-# Replace the placeholders below with your Supabase credentials
-# DATABASE_URL="postgresql://postgres.<SUPABASE_USER>:<SUPABASE_PASSWORD>@db.<SUPABASE_PROJECT>.supabase.co:5432/postgres"
+ Database Configuration (Production - Supabase)
+ Replace the placeholders below with your Supabase credentials
+ DATABASE_URL="postgresql://postgres.<SUPABASE_USER>:<SUPABASE_PASSWORD>@db.<SUPABASE_PROJECT>.supabase.co:5432/postgres"
 
 
 ### Local Development
