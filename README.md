@@ -51,18 +51,33 @@ npm install
 
 Create a `.env` file in the root directory:
 
+## Environment Variables
+
+Create a `.env` file in the root directory and configure the following variables:
+
 ```env
-## Server
+# Server Configuration
 PORT=4000
 NODE_ENV=development
 
-## Local PostgreSQL (for local development)
+# Database Configuration (Local Development)
 DATABASE_URL="postgresql://postgres:password@localhost:5432/flowserve"
 
-# Supabase (for production deployment)
-# Replace with your Supabase connection string from Project Settings → Database
+# Database Configuration (Production - Supabase)
+# Replace the placeholders below with your Supabase credentials
 # DATABASE_URL="postgresql://postgres.<SUPABASE_USER>:<SUPABASE_PASSWORD>@db.<SUPABASE_PROJECT>.supabase.co:5432/postgres"
 ```
+
+### Local Development
+
+Use a local PostgreSQL instance and update the `DATABASE_URL` with your database credentials.
+
+### Production Deployment
+
+For production, create a PostgreSQL database in Supabase and replace the commented `DATABASE_URL` with your project's connection string. You can find this in:
+
+**Supabase Dashboard → Project Settings → Database → Connection String**
+
 
 When deploying, set your Supabase DATABASE_URL in your hosting environment (Render, Vercel, Railway, etc.) under Environment Variables. 4. **Set up the database:**
 
