@@ -302,12 +302,6 @@ This is a test project for learning purposes.
 
 ---
 
-## License
-
-MIT
-
----
-
 ## 👤 Author
 
 **Mary Amadi**  
